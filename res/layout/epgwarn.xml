@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dip"
+    android:layout_height="300dip"
+    android:layout_gravity="center"
+    android:background="@drawable/searchprompt" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dip"
+        android:text="温馨提示"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/FONT_SIZE_BIG" />
+
+    <com.guoantvbox.cs.tvdispatch.TextMarquee
+        android:id="@+id/jiemuinfo"
+        android:layout_width="350dip"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dip"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textColor="@color/promptyellow"
+        android:textSize="@dimen/FONT_SIZE_NORMAL" />
+
+    <TextView
+        android:id="@+id/prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jiemuinfo"
+        android:layout_centerInParent="true"
+        android:text="是否观看？"
+        android:textColor="@color/promptyellow"
+        android:textSize="@dimen/FONT_SIZE_NORMAL" />
+
+    <TextView
+        android:id="@+id/idsecond"
+        android:layout_width="80dip"
+        android:layout_height="40dip"
+        android:layout_below="@+id/jiemuinfo"
+        android:layout_toRightOf="@+id/prompt"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/FONT_SIZE_NORMAL" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dip" >
+
+        <Button
+            android:id="@+id/guankanjiemu"
+            android:layout_width="150dip"
+            android:layout_height="60dip"
+            android:background="@drawable/selector"
+            android:gravity="center"
+            android:text="确    认"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/FONT_SIZE_NORMAL" />
+
+        <Button
+            android:id="@+id/cancelguankanjiemu"
+            android:layout_width="150dip"
+            android:layout_height="60dip"
+            android:layout_toRightOf="@+id/guankanjiemu"
+            android:background="@drawable/selector"
+            android:gravity="center"
+            android:text="取    消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/FONT_SIZE_NORMAL" />
+    </RelativeLayout>
+
+</RelativeLayout>
