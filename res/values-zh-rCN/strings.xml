@@ -981,4 +981,8 @@
     <string name="jmgl_item_remove_z">删除</string>
     <string name="jmgl_item_favor_z">喜爱</string>
  <string name="email_prompt_1_z"> “返回”  上一层。</string>
+ 
+  <string name="beijing_h">北京</string>
+  <string name="str_clear">Confirm clear</string>
+  <string name="notimeinfo">00:00</string>
 </resources>
