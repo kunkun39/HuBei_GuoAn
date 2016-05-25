@@ -18,7 +18,7 @@
         android:visibility="visible" >
 
         <LinearLayout
-            android:id="@+id/epg_weekeventlayout"
+            android:id="@+id/epg_weekeventlayout_out"
             android:layout_width="1150dip"
             android:layout_height="558dip"
             android:layout_centerHorizontal="true"
