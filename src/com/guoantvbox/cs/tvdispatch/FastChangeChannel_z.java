@@ -421,7 +421,7 @@ public class FastChangeChannel_z extends Activity {
 				if (OKLISTRunnable != null) {
 					progressHandler.removeCallbacks(OKLISTRunnable);
 				}
-				progressHandler.postDelayed(OKLISTRunnable, 200);
+				progressHandler.post(OKLISTRunnable);
 				PF_enventName_P = context.getResources().getString(R.string.noprogrampfinfo);
 				PF_enventName_F = context.getResources().getString(R.string.noprogrampfinfo);
 				DVB_EPG_PF pfInfo = DVB.getManager().getEpgInstance().getPfInfo(channel);
