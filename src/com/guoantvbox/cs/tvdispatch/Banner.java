@@ -1,5 +1,7 @@
 package com.guoantvbox.cs.tvdispatch;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -70,11 +72,33 @@ public class Banner {
 	private AdStrategy ads;
 	private int curId = 0;
 	private Handler processADHandler;
+	private String tempStr = "";
+
+	public Banner() {
+		// TODO Auto-generated constructor stub
+	}
 
 	private Banner(Context context) {
 		mContext = context.getApplicationContext();
+		new Thread(new Thread() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				super.run();
+				try {
+					// ReturnStr1 = java.net.InetAddress.getByName(host);
+					tempStr = java.net.InetAddress.getByName(Advertise_Constant.ADNET_ADDRESS).getHostAddress();
+					Log.i("zyt", tempStr);
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}).start();
 		AdOperation.setAquaPassAddress(Advertise_Constant.ADNET_ADDRESS);
 		AdOperation.setAdItemAddress(Advertise_Constant.ADNET_ADDRESS);
+		// AdOperation.setAquaPassAddress(tempStr);
+		// AdOperation.setAdItemAddress(tempStr);
 		processADHandler = new Handler(mContext.getMainLooper()) {
 			@Override
 			public void handleMessage(Message msg) {
@@ -255,7 +279,6 @@ public class Banner {
 		public void run() {
 			// TODO Auto-generated method stub
 			startAdsRequestAD(curId);
-
 		}
 	};
 
@@ -319,6 +342,8 @@ public class Banner {
 			public void onError(int errorCode, String message) {
 				// ��ù����Խ������
 				Log.i("zyt", "AdStrategy---------------onError");
+				Log.i("zyt", "AdStrategy---------------onError-----eeeee");
+				Log.i("zyt", "AdStrategy---------------onError-----eeeee + tempstr" + tempStr);
 			}
 		});
 
