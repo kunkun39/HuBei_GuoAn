@@ -556,7 +556,7 @@ public class Main extends Activity implements ISceneListener {
 			if (volumeAdRunnable != null) {
 				mUiHandler.removeCallbacks(volumeAdRunnable);
 			}
-			mUiHandler.postDelayed(volumeAdRunnable, 200);
+			mUiHandler.post(volumeAdRunnable);
 			mUiHandler.sendEmptyMessage(MESSAGE_VOLUME_SHOW);
 
 			return true;
