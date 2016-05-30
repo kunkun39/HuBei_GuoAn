@@ -141,7 +141,7 @@ public class Banner {
 		if (pFBannerYiHanRunnable != null) {
 			processADHandler.removeCallbacks(pFBannerYiHanRunnable);
 		}
-		processADHandler.postDelayed(pFBannerYiHanRunnable, 500);
+		processADHandler.post(pFBannerYiHanRunnable);
 		bannerToast.setView(bannerView);
 		bannerToast.setDuration(Toast.LENGTH_LONG);
 		bannerToast.show();
@@ -283,33 +283,27 @@ public class Banner {
 	};
 
 	public void startAdsRequestAD(int chanId) {
-		// ads = new AdStrategy(mContext, "yinhedtvpf", getParams());
 		Channel curChannel = DVB.getManager().getChannelDBInstance().getChannel(chanId);
 		ads = new AdStrategy(mContext, Advertise_Constant.LIVEPLAY_ID_PFBANNER,
 				Common.getParams(curChannel.serviceId + "", Advertise_Constant.LIVEPLAY_ID_PFBANNER,
 						Advertise_Constant.TEMP_IP_ADDRESS));
-		// ���������
 		ads.request();
 
 		adPlayer.setIAdPlayerCallbackListener(new IAdPlayerCallbackListener() {
 
 			@Override
 			public void onPrepared(AdPlayer v) {
-				// �������׼�������󲥷�
-				Log.e("FSLog", "��Ƶ׼�����------------onPrepared");
-				// adPlayer.play("");
+				Log.e("FSLog", "adPlayer------------onPrepared");
 			}
 
 			@Override
 			public void onError(AdPlayer v, int errorCode, String message) {
-				// ���ؼ������з��������׳��������
-				Log.e("FSLog", "�����쳣------------onError");
+				Log.e("FSLog", "adPlayer------------onError");
 			}
 
 			@Override
 			public void onCompleted(AdPlayer v) {
-				// ���ؼ��й�����ݲ�����Ϻ����
-				Log.e("FSLog", "��沥�Ž���-----------onCompleted");
+				Log.e("FSLog", "adPlayer-----------onCompleted");
 				adPlayer.stop();
 			}
 		});
@@ -318,18 +312,17 @@ public class Banner {
 
 			@Override
 			public void onResponse(ArrayList<AdItem> items) {
-				// ��ù����Խ���������
 				Log.i("zyt", "AdStrategy-------------------------onResponse");
-				Log.i("zyt", "AdStrategy-------------------------onResponse  ֮ǰ����б�ĳ���" + items.size());
+				Log.i("zyt", "AdStrategy-------------------------onResponse" + items.size());
 				if (items != null && items.size() > 0) {
 					AdItem temp = items.get(0);
 					// Log.i("zyt", " " + items.size());
-					if (temp.type == AdItem.TYPE_SELF_PLAY) {// �������
-					} else {// �ǿ�����棬��ȡ�岥�������λ��
+					if (temp.type == AdItem.TYPE_SELF_PLAY) {
+					} else {
 						adList = items;
-						if (temp.type == AdItem.TYPE_SELF_PLAY) {// �������
-						} else {// �ǿ�����棬��ȡ�岥�������λ��
-							// ����ͼƬ
+						if (temp.type == AdItem.TYPE_SELF_PLAY) {
+						} else {
+
 							playAd(items.get(0).Id);
 						}
 					}
@@ -340,14 +333,12 @@ public class Banner {
 
 			@Override
 			public void onError(int errorCode, String message) {
-				// ��ù����Խ������
 				Log.i("zyt", "AdStrategy---------------onError");
 				Log.i("zyt", "AdStrategy---------------onError-----eeeee");
 				Log.i("zyt", "AdStrategy---------------onError-----eeeee + tempstr" + tempStr);
 			}
 		});
 
-		// �����������õ����ؼ���
 		adPlayer.setAdStrategy(ads);
 	}
 
