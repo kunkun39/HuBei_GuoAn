@@ -505,7 +505,7 @@ public class Epg_z extends Activity implements ISceneListener {
 						uiHandler.removeCallbacks(proGuideRunnable);
 					}
 					// uiHandler.postDelayed(r, delayMillis)
-					uiHandler.postDelayed(proGuideRunnable, 200);
+					uiHandler.post(proGuideRunnable);
 				}
 			}
 
